@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Site en Construction</title>
+    <meta name="description" content="Notre site web est en cours de construction. Inscrivez-vous pour être notifié du lancement!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .background.slide-1 {
+            background-image: url('images/Image A.png');
+        }
+
+        .background.slide-2 {
+            background-image: url('images/Image B.png');
+        }
+
+        .background.slide-3 {
+            background-image: url('images/Image C.png');
+        }
+
+       
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 600px;
+            
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.2em;
+        }
+
+        .subtitle {
+            color: #d1d5db;
+            font-size: 1.25rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-circle {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            border: 2px solid #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .countdown-label {
+            color: #a855f7;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        .subscription-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            flex: 1;
+            height: 56px !important;
+            padding: 0 1.5rem;
+            border-radius: 10px;
+            border: none;
+            background-color: white;
+            color: #374151;
+            font-size: 1.125rem;
+            outline: none;
+            min-width: 250px;
+            box-sizing: border-box;
+        }
+
+        .email-input::placeholder {
+            color: #6b7280;
+        }
+
+        .subscribe-btn {
+            height: 56px;
+            padding: 0 2rem;
+            border-radius: 10px;
+            border: none;
+            background-color: #2e00FF;
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #2e00FF;
+        }
+
+        .subscribe-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subscription-form {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .email-input {
+                width: 100%;
+                max-width: none;
+                min-width: 0;
+                height: 60px !important;
+                font-size: 1.125rem;
+                flex: none;
+                margin-bottom: 0;
+            }
+
+            .subscribe-btn {
+                width: 100%;
+                max-width: none;
+                height: 60px !important;
+                flex: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.8rem;
+            }
+
+            .subscription-form {
+                max-width: 350px;
+                padding: 0 1rem;
+            }
+
+            .email-input {
+                font-size: 0.8rem;
+                height: 60px !important;
+                flex: none;
+            }
+
+            .subscribe-btn {
+                font-size: 0.8rem;
+                height: 60px !important;
+                flex: none;
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            border-radius: 8px;
+            color: #22c55e;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <h1 class="main-title">COMING SOON</h1>
+        <p class="subtitle">Our website is under construction, follow us for update now!</p>
+        
+        
+        <form action="https://formsubmit.co/direction@brandprtnrs.com" class="subscription-form" id="subscriptionForm">
+            <input 
+                type="email" 
+                class="email-input" 
+                placeholder="Enter Email Address"
+                id="emailInput"
+                required
+            >
+            <button type="submit" class="subscribe-btn">SUBSCRIBE</button>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            Merci pour votre inscription ! Nous vous tiendrons informé.
+        </div>
+    </div>
+
+    <script>
+        // Background Carousel
+        let currentSlide = 1;
+        const totalSlides = 3;
+        const backgroundElement = document.querySelector('.background');
+
+        function changeBackground() {
+            // Remove current slide class
+            backgroundElement.classList.remove(`slide-${currentSlide}`);
+            
+            // Move to next slide
+            currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+            
+            // Add new slide class
+            backgroundElement.classList.add(`slide-${currentSlide}`);
+        }
+
+        // Initialize first slide
+        backgroundElement.classList.add('slide-1');
+
+        // Change background every 5 seconds
+        setInterval(changeBackground, 5000);
+
+        // Countdown Timer
+        let timeLeft = {
+            days: 35,
+            hours: 17,
+            minutes: 40,
+            seconds: 23
+        };
+
+        function updateCountdown() {
+            // Update seconds
+            if (timeLeft.seconds > 0) {
+                timeLeft.seconds--;
+            } else if (timeLeft.minutes > 0) {
+                timeLeft.seconds = 59;
+                timeLeft.minutes--;
+            } else if (timeLeft.hours > 0) {
+                timeLeft.seconds = 59;
+                timeLeft.minutes = 59;
+                timeLeft.hours--;
+            } else if (timeLeft.days > 0) {
+                timeLeft.seconds = 59;
+                timeLeft.minutes = 59;
+                timeLeft.hours = 23;
+                timeLeft.days--;
+            }
+
+            // Update DOM
+            document.getElementById('days').textContent = timeLeft.days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = timeLeft.hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = timeLeft.minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = timeLeft.seconds.toString().padStart(2, '0');
+        }
+
+        // Start countdown
+        setInterval(updateCountdown, 1000);
+
+        // Email subscription form
+        document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('emailInput');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (emailInput.value && emailInput.validity.valid) {
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Clear input
+                emailInput.value = '';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        // Optional: Set a specific target date instead of countdown from current values
+        // Uncomment and modify the date below to use a specific launch date
+        /*
+        function setTargetDate() {
+            const targetDate = new Date('2024-12-31 23:59:59').getTime();
+            
+            function updateToTargetDate() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                
+                if (distance > 0) {
+                    timeLeft.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    timeLeft.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    timeLeft.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    timeLeft.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                    // Update DOM
+                    document.getElementById('days').textContent = timeLeft.days.toString().padStart(2, '0');
+                    document.getElementById('hours').textContent = timeLeft.hours.toString().padStart(2, '0');
+                    document.getElementById('minutes').textContent = timeLeft.minutes.toString().padStart(2, '0');
+                    document.getElementById('seconds').textContent = timeLeft.seconds.toString().padStart(2, '0');
+                }
+            }
+            
+            setInterval(updateToTargetDate, 1000);
+        }
+        */
+    </script>
+</body>
+</html>
